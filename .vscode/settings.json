@@ -1,0 +1,8 @@
+{
+  "python.terminal.activateEnvironment": "false",
+  "cSpell.words": [
+    "dbname"
+  ],
+  "python.disableInstallationCheck": true,
+  "python.pythonPath": "/Users/josephvedadi/.local/share/virtualenvs/Chat_room-ttTpbQ_N/bin/python"
+}
