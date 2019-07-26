@@ -1,25 +1,33 @@
-import sqlite3
+import os
 import json
 from datetime import datetime
-import time
-
+import logging
 from sqlalchemy import create_engine
-from sqlalchemy import Column, Integer, String, ForeignKey, TEXT
-
+from sqlalchemy import Column, Integer, String, TEXT
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker, relationship, backref
-import os, json
+from sqlalchemy.orm import sessionmaker
 
 POSTGRES_PORT = 5432
 POSTGRES_PASSWORD = "postgres"
 POSTGRES_USER = "postgres"
 POSTGRES_DB = "postgres"
 POSTGRES_HOST = "localhost"
-Data_dir = "./Text_Data/"
+Data_dir = "../deep_data/data"
 MIN_SCORE = 0
-Max_Words = 50
-Data_Len = 1000
+Max_Words = 100
+Data_Len = 10000
 
+row_counter = 0
+paired_rows = 0
+Insert = 0
+Update = 0
+LowScore = 0
+Bad_Text = 0
+logging.basicConfig(
+    format="%(asctime)s %(levelname)-8s %(message)s",
+    level=logging.INFO,
+    datefmt="%Y-%m-%d %H:%M:%S",
+)
 
 engine_str = "postgresql://{user}:{password}@{hostname}:{port}/{dbname}".format(
     user=POSTGRES_USER,
@@ -29,6 +37,7 @@ engine_str = "postgresql://{user}:{password}@{hostname}:{port}/{dbname}".format(
     dbname=POSTGRES_DB,
 )
 
+engine_str = "sqlite:///{}.db".format(int(datetime.now().timestamp()))
 
 Base = declarative_base()
 
@@ -62,11 +71,15 @@ def format_data(data):
 
 
 def sql_replace_comment(args):
+    global Update
+    Update += 1
     query = session.query(Comment).filter_by(parent_id=args["parent_id"])
     query.update(args)
 
 
 def sql_insert(args):
+    global Insert
+    Insert += 1
     comment = Comment(**args)
     session.add(comment)
 
@@ -85,39 +98,46 @@ def acceptable(data):
 
 
 def find_parent(pid):
-    query = session.query(Comment).filter_by(comment_id=pid).first()
-    return False if query is None else query.comment
+    try:
+        query = session.query(Comment).filter_by(comment_id=pid).first()
+        return False if query is None else query.comment
+    except:
+        return False
 
 
 def find_existing_score(pid):
-    query = session.query(Comment).filter_by(parent_id=pid).first()
-    return False if query is None else query.score
+    try:
+        query = session.query(Comment).filter_by(parent_id=pid).first()
+        return False if query is None else query.score
+    except:
+        return False
 
 
 if __name__ == "__main__":
-    row_counter = 0
-    paired_rows = 0
     for filepath in sorted(os.listdir(Data_dir)):
-        if filepath.startswith("."):
+        if (
+            filepath.startswith(".")
+            or filepath.endswith(".bz2")
+            or not filepath.startswith("RC")
+            or filepath != "RC_2018-07"
+        ):
             continue
         filepath = os.path.join(Data_dir, filepath)
-        print(
-            "Proccessing : {} row_counter: {} paired_rows:{}".format(
-                filepath, row_counter, paired_rows
-            )
-        )
-        with open(filepath, buffering=1000) as f:
+        logging.info("Proccessing : {} ".format(filepath))
+        with open(filepath, buffering=100000) as f:
             for row in f:
                 row_counter += 1
                 try:
                     row = json.loads(row)
-                    parent_id = row["parent_id"]
+                    parent_id = row["parent_id"].split("_")[1]
+                    comment_id = row["id"]
                     body = format_data(row["body"])
                     created_utc = row["created_utc"]
                     score = row["score"]
                     parent_data = find_parent(parent_id)
+
                     args = {
-                        "comment_id": row["link_id"],
+                        "comment_id": comment_id,
                         "parent_id": parent_id,
                         "score": score,
                         "subreddit": row["subreddit"],
@@ -125,8 +145,12 @@ if __name__ == "__main__":
                         "comment": body,
                         "created_utc": row["created_utc"],
                     }
-                    if not score > MIN_SCORE:
-                        if acceptable(body):
+                    if score < MIN_SCORE:
+                        LowScore += 1
+                    else:
+                        if not acceptable(body):
+                            Bad_Text += 1
+                        else:
                             existing_comment_score = find_existing_score(parent_id)
                             if existing_comment_score:
                                 if score > existing_comment_score:
@@ -136,12 +160,15 @@ if __name__ == "__main__":
                                 if parent_data:
                                     paired_rows += 1
                 except Exception as e:
-                    print(str(e))
-                    exit()
-
-
-# print("Cleaning up!")
-# session.query(Comment).filter(Comment.comment.isnot(None)).delete()
-
-
+                    logging.info(str(e))
+                    pass
+                if row_counter % 1000 == 0:
+                    logging.info(
+                        "row_counter: {} paired_rows:{} Update: {} Insert: {} LowScore:{}  Bad_Text:{}".format(
+                            row_counter, paired_rows, Update, Insert, LowScore, Bad_Text
+                        )
+                    )
+                    session.commit()
 session.commit()
+# logging.info("Cleaning up!")
+# session.query(Comment).filter(Comment.comment.isnot(None)).delete()
