@@ -2,16 +2,8 @@ import os
 import json
 from datetime import datetime
 import logging
-from sqlalchemy import create_engine
-from sqlalchemy import Column, Integer, String, TEXT
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+import sqlite3
 
-POSTGRES_PORT = 5432
-POSTGRES_PASSWORD = "postgres"
-POSTGRES_USER = "postgres"
-POSTGRES_DB = "postgres"
-POSTGRES_HOST = "localhost"
 Data_dir = "../deep_data/data"
 MIN_SCORE = 0
 Max_Words = 100
@@ -28,36 +20,15 @@ logging.basicConfig(
     level=logging.INFO,
     datefmt="%Y-%m-%d %H:%M:%S",
 )
-
-engine_str = "postgresql://{user}:{password}@{hostname}:{port}/{dbname}".format(
-    user=POSTGRES_USER,
-    password=POSTGRES_PASSWORD,
-    hostname=POSTGRES_HOST,
-    port=POSTGRES_PORT,
-    dbname=POSTGRES_DB,
-)
-
-engine_str = "sqlite:///{}.db".format(int(datetime.now().timestamp()))
-
-Base = declarative_base()
+DateTimeInt = int(datetime.now().timestamp())
+connection = sqlite3.connect("{}.db".format(DateTimeInt))
+c = connection.cursor()
 
 
-class Comment(Base):
-
-    __tablename__ = "comments"
-    parent_id = Column(String, primary_key=True, index=True)
-    comment_id = Column(String, unique=True)
-    parent = Column(TEXT)
-    comment = Column(TEXT)
-    subreddit = Column(TEXT)
-    created_utc = Column(Integer)
-    score = Column(Integer)
-
-
-engine = create_engine(engine_str)
-Base.metadata.create_all(engine)
-Session = sessionmaker(bind=engine)
-session = Session()
+def create_table():
+    c.execute(
+        "CREATE TABLE IF NOT EXISTS communication(parent_id TEXT PRIMARY KEY, comment_id TEXT UNIQUE, parent TEXT, comment TEXT, subreddit TEXT, unix INT, score INT)"
+    )
 
 
 def format_data(data):
@@ -99,21 +70,37 @@ def acceptable(data):
 
 def find_parent(pid):
     try:
-        query = session.query(Comment).filter_by(comment_id=pid).first()
-        return False if query is None else query.comment
-    except:
+        sql = "SELECT comment FROM communication WHERE comment_id = '{}' LIMIT 1".format(
+            pid
+        )
+        c.execute(sql)
+        result = c.fetchone()
+        if result != None:
+            return result[0]
+        else:
+            return False
+    except Exception:
         return False
 
 
 def find_existing_score(pid):
     try:
-        query = session.query(Comment).filter_by(parent_id=pid).first()
-        return False if query is None else query.score
-    except:
+        sql = "SELECT score FROM communication WHERE parent_id = '{}' LIMIT 1".format(
+            pid
+        )
+        c.execute(sql)
+        result = c.fetchone()
+        if result != None:
+            return result[0]
+        else:
+            return False
+    except Exception as e:
+        # print(str(e))
         return False
 
 
 if __name__ == "__main__":
+    create_table()
     for filepath in sorted(os.listdir(Data_dir)):
         if (
             filepath.startswith(".")
@@ -168,7 +155,7 @@ if __name__ == "__main__":
                             row_counter, paired_rows, Update, Insert, LowScore, Bad_Text
                         )
                     )
-                    session.commit()
+                    session.flush()
 session.commit()
 # logging.info("Cleaning up!")
 # session.query(Comment).filter(Comment.comment.isnot(None)).delete()

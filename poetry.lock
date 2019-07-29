@@ -1,4 +1,16 @@
 [[package]]
+category = "main"
+description = "A Python library to create/load an application configuration file."
+name = "appconfigpy"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+version = "0.4.2"
+
+[package.dependencies]
+setuptools = ">=38.3.0"
+six = ">=1.10.0,<2.0.0"
+
+[[package]]
 category = "dev"
 description = "A small Python module for determining appropriate platform-specific dirs, e.g. a \"user data dir\"."
 name = "appdirs"
@@ -7,12 +19,23 @@ python-versions = "*"
 version = "1.4.3"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "Classes Without Boilerplate"
 name = "attrs"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 version = "19.1.0"
+
+[[package]]
+category = "main"
+description = "Screen-scraping library"
+name = "beautifulsoup4"
+optional = false
+python-versions = "*"
+version = "4.8.0"
+
+[package.dependencies]
+soupsieve = ">=1.2"
 
 [[package]]
 category = "dev"
@@ -29,12 +52,295 @@ click = ">=6.5"
 toml = ">=0.9.4"
 
 [[package]]
-category = "dev"
+category = "main"
+description = "Python package for providing Mozilla's CA Bundle."
+name = "certifi"
+optional = false
+python-versions = "*"
+version = "2019.6.16"
+
+[[package]]
+category = "main"
+description = "Universal encoding detector for Python 2 and 3"
+name = "chardet"
+optional = false
+python-versions = "*"
+version = "3.0.4"
+
+[[package]]
+category = "main"
 description = "Composable command line interface toolkit"
 name = "click"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 version = "7.0"
+
+[[package]]
+category = "main"
+description = "Cross-platform colored terminal text."
+name = "colorama"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+version = "0.4.1"
+
+[[package]]
+category = "main"
+description = "Python library for extract property from data."
+name = "dataproperty"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+version = "0.43.1"
+
+[package.dependencies]
+mbstrdecoder = ">=0.8.0,<1.0.0"
+setuptools = ">=38.3.0"
+six = ">=1.10.0,<2.0.0"
+typepy = ">=0.6.0,<1.0.0"
+
+[[package]]
+category = "main"
+description = "Better living through Python with decorators"
+name = "decorator"
+optional = false
+python-versions = ">=2.6, !=3.0.*, !=3.1.*"
+version = "4.4.0"
+
+[[package]]
+category = "main"
+description = "Internationalized Domain Names in Applications (IDNA)"
+name = "idna"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+version = "2.8"
+
+[[package]]
+category = "main"
+description = "Read metadata from Python packages"
+marker = "python_version > \"3.4\""
+name = "importlib-metadata"
+optional = false
+python-versions = ">=2.7,!=3.0,!=3.1,!=3.2,!=3.3"
+version = "0.19"
+
+[package.dependencies]
+zipp = ">=0.5"
+
+[[package]]
+category = "main"
+description = "Vestigial utilities from IPython"
+name = "ipython-genutils"
+optional = false
+python-versions = "*"
+version = "0.2.0"
+
+[[package]]
+category = "main"
+description = "An implementation of JSON Schema validation for Python"
+name = "jsonschema"
+optional = false
+python-versions = "*"
+version = "3.0.1"
+
+[package.dependencies]
+attrs = ">=17.4.0"
+pyrsistent = ">=0.14.0"
+setuptools = "*"
+six = ">=1.11.0"
+
+[[package]]
+category = "main"
+description = "Jupyter core package. A base package on which Jupyter projects rely."
+name = "jupyter-core"
+optional = false
+python-versions = ">=2.7, !=3.0, !=3.1, !=3.2"
+version = "4.5.0"
+
+[package.dependencies]
+traitlets = "*"
+
+[[package]]
+category = "main"
+description = "A logging replacement for Python"
+name = "logbook"
+optional = false
+python-versions = "*"
+version = "1.4.3"
+
+[[package]]
+category = "main"
+description = "Python implementation of Markdown."
+marker = "extra == \"md\""
+name = "markdown"
+optional = false
+python-versions = "*"
+version = "2.6.11"
+
+[[package]]
+category = "main"
+description = "multi-byte character string decoder"
+name = "mbstrdecoder"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+version = "0.8.1"
+
+[package.dependencies]
+chardet = ">=3.0.4,<4.0.0"
+setuptools = ">=38.3.0"
+
+[[package]]
+category = "main"
+description = "msgfy is a Python library for convert Exception instance to a human-readable error message."
+name = "msgfy"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+version = "0.0.7"
+
+[package.dependencies]
+setuptools = ">=38.3.0"
+
+[[package]]
+category = "main"
+description = "The Jupyter Notebook format"
+name = "nbformat"
+optional = false
+python-versions = "*"
+version = "4.4.0"
+
+[package.dependencies]
+ipython-genutils = "*"
+jsonschema = ">=2.4,<2.5.0 || >2.5.0"
+jupyter-core = "*"
+traitlets = ">=4.1"
+
+[[package]]
+category = "main"
+description = "A module wrapper for os.path"
+marker = "python_version > \"3.4\""
+name = "path.py"
+optional = false
+python-versions = ">=3.5"
+version = "12.0.1"
+
+[package.dependencies]
+importlib-metadata = ">=0.5"
+
+[[package]]
+category = "main"
+description = "pathvalidate is a Python library to sanitize/validate a string such as filenames/file-paths/etc."
+name = "pathvalidate"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+version = "0.29.0"
+
+[package.dependencies]
+setuptools = ">=38.3.0"
+
+[[package]]
+category = "main"
+description = "Persistent/Functional/Immutable data structures"
+name = "pyrsistent"
+optional = false
+python-versions = "*"
+version = "0.15.4"
+
+[package.dependencies]
+six = "*"
+
+[[package]]
+category = "main"
+description = "pytablereader is a Python library to load structured table data from files/strings/URL with various data format: CSV / Excel / Google-Sheets / HTML / JSON / LDJSON / LTSV / Markdown / SQLite / TSV."
+name = "pytablereader"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+version = "0.26.1"
+
+[package.dependencies]
+DataProperty = ">=0.43.1,<1.0.0"
+Markdown = ">=2.6.6,<3.0.0"
+SimpleSQLite = ">=0.45.2,<1.0.0"
+beautifulsoup4 = ">=4.4.1,<5.0.0"
+jsonschema = ">=2.5.1,<4.0.0"
+mbstrdecoder = ">=0.8.0,<1.0.0"
+pathvalidate = ">=0.28.0,<1.0.0"
+requests = ">=2.18.4,<3.0.0"
+retryrequests = ">=0.0.2,<0.1.0"
+setuptools = ">=38.3.0"
+six = ">=1.10.0,<2.0.0"
+tabledata = ">=0.9.1,<1.0.0"
+typepy = ">=0.6.0,<1.0.0"
+xlrd = ">=0.9.4"
+
+[package.dependencies."path.py"]
+python = ">=3.5"
+version = ">=12.0.1,<13"
+
+[[package]]
+category = "main"
+description = "Python HTTP for Humans."
+name = "requests"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+version = "2.22.0"
+
+[package.dependencies]
+certifi = ">=2017.4.17"
+chardet = ">=3.0.2,<3.1.0"
+idna = ">=2.5,<2.9"
+urllib3 = ">=1.21.1,<1.25.0 || >1.25.0,<1.25.1 || >1.25.1,<1.26"
+
+[[package]]
+category = "main"
+description = "A Python library for HTTP requests using requests package with exponential back-off retry."
+name = "retryrequests"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+version = "0.0.3"
+
+[package.dependencies]
+requests = ">=2.18.4,<3.0.0"
+setuptools = ">=38.3.0"
+
+[[package]]
+category = "main"
+description = "Simple, fast, extensible JSON encoder/decoder for Python"
+name = "simplejson"
+optional = false
+python-versions = ">=2.5, !=3.0.*, !=3.1.*, !=3.2.*"
+version = "3.16.0"
+
+[[package]]
+category = "main"
+description = "SimpleSQLite is a Python library to simplify SQLite database operations: table creation, data insertion and get data as other data formats. Simple ORM functionality for SQLite."
+name = "simplesqlite"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+version = "0.45.2"
+
+[package.dependencies]
+DataProperty = ">=0.43.1,<1.0.0"
+mbstrdecoder = ">=0.8.0,<1.0.0"
+pathvalidate = ">=0.28.0,<1.0.0"
+setuptools = ">=38.3.0"
+six = ">=1.10.0,<2.0.0"
+sqliteschema = ">=0.16.2,<1.0.0"
+tabledata = ">=0.9.1,<1.0.0"
+typepy = ">=0.6.0,<1.0.0"
+
+[[package]]
+category = "main"
+description = "Python 2 and 3 compatibility utilities"
+name = "six"
+optional = false
+python-versions = ">=2.6, !=3.0.*, !=3.1.*"
+version = "1.12.0"
+
+[[package]]
+category = "main"
+description = "A modern CSS selector implementation for Beautiful Soup."
+name = "soupsieve"
+optional = false
+python-versions = "*"
+version = "1.9.2"
 
 [[package]]
 category = "main"
@@ -45,6 +351,62 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 version = "1.3.6"
 
 [[package]]
+category = "main"
+description = "sqlitebiter is a CLI tool to convert CSV / Excel / HTML / JSON / Jupyter Notebook / LDJSON / LTSV / Markdown / SQLite / SSV / TSV / Google-Sheets to a SQLite database file."
+name = "sqlitebiter"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+version = "0.28.0"
+
+[package.dependencies]
+Logbook = ">=0.12.3,<2.0.0"
+SimpleSQLite = ">=0.45.0,<1.0.0"
+appconfigpy = ">=0.4.0,<1.0.0"
+click = ">=6.2,<8.0"
+colorama = ">=0.3.7,<1.0.0"
+msgfy = ">=0.0.6,<0.1.0"
+nbformat = ">=4.4.0,<5.0.0"
+pathvalidate = ">=0.28.0,<1.0.0"
+pytablereader = ">=0.26.0,<1.0.0"
+retryrequests = ">=0.0.2,<0.1.0"
+setuptools = ">=38.3.0"
+simplejson = ">=3.8.1,<4.0"
+typepy = ">=0.5.0,<1.0.0"
+
+[package.dependencies."path.py"]
+python = ">=3.5"
+version = ">=12.0.1,<13"
+
+[[package]]
+category = "main"
+description = " A Python library to dump table schema of a SQLite database file."
+name = "sqliteschema"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+version = "0.16.2"
+
+[package.dependencies]
+mbstrdecoder = ">=0.8.0,<1.0.0"
+setuptools = ">=38.3.0"
+six = ">=1.10.0,<2.0.0"
+tabledata = ">=0.9.1,<1.0.0"
+typepy = ">=0.6.0,<1.0.0"
+
+[[package]]
+category = "main"
+description = "tabledata is a Python library to represent tabular data. Used for pytablewriter/pytablereader/SimpleSQLite."
+name = "tabledata"
+optional = false
+python-versions = "*"
+version = "0.9.1"
+
+[package.dependencies]
+DataProperty = ">=0.43.1,<1.0.0"
+setuptools = ">=38.3.0"
+six = ">=1.10.0,<2.0.0"
+typepy = ">=0.6.0,<1.0.0"
+
+[[package]]
 category = "dev"
 description = "Python Library for Tom's Obvious, Minimal Language"
 name = "toml"
@@ -52,14 +414,101 @@ optional = false
 python-versions = "*"
 version = "0.10.0"
 
+[[package]]
+category = "main"
+description = "Traitlets Python config system"
+name = "traitlets"
+optional = false
+python-versions = "*"
+version = "4.3.2"
+
+[package.dependencies]
+decorator = "*"
+ipython-genutils = "*"
+six = "*"
+
+[[package]]
+category = "main"
+description = "typepy is a Python library for variable type checker/validator/converter at a run time."
+name = "typepy"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+version = "0.6.0"
+
+[package.dependencies]
+mbstrdecoder = ">=0.8.0,<1.0.0"
+setuptools = ">=38.3.0"
+six = ">=1.10.0,<2.0.0"
+
+[[package]]
+category = "main"
+description = "HTTP library with thread-safe connection pooling, file post, and more."
+name = "urllib3"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, <4"
+version = "1.25.3"
+
+[[package]]
+category = "main"
+description = "Library for developers to extract data from Microsoft Excel (tm) spreadsheet files"
+marker = "extra == \"excel\""
+name = "xlrd"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+version = "1.2.0"
+
+[[package]]
+category = "main"
+description = "Backport of pathlib-compatible object wrapper for zip files"
+marker = "python_version > \"3.4\""
+name = "zipp"
+optional = false
+python-versions = ">=2.7"
+version = "0.5.2"
+
 [metadata]
-content-hash = "64a2944462fb429db7619458b0d8d5c5b6922e5b1a355405f1b1bf458f09f53a"
+content-hash = "8d5ae38d70208fce3699fa28d95f098b83033862888ee139e1124264b43f8085"
 python-versions = "^3.7"
 
 [metadata.hashes]
+appconfigpy = ["c5a54fc3b6cd52bebfe45884a32abff54335bf4be34ba114e3e30e5219fc64ad", "c7d9fdf3bf42d0b8f6769a8d52f9e80087280f5919eb7c89b9463e2338b539bf"]
 appdirs = ["9e5896d1372858f8dd3344faf4e5014d21849c756c8d5701f78f8a103b372d92", "d8b24664561d0d34ddfaec54636d502d7cea6e29c3eaf68f3df6180863e2166e"]
 attrs = ["69c0dbf2ed392de1cb5ec704444b08a5ef81680a61cb899dc08127123af36a79", "f0b870f674851ecbfbbbd364d6b5cbdff9dcedbc7f3f5e18a6891057f21fe399"]
+beautifulsoup4 = ["05668158c7b85b791c5abde53e50265e16f98ad601c402ba44d70f96c4159612", "25288c9e176f354bf277c0a10aa96c782a6a18a17122dba2e8cec4a97e03343b", "f040590be10520f2ea4c2ae8c3dae441c7cfff5308ec9d58a0ec0c1b8f81d469"]
 black = ["817243426042db1d36617910df579a54f1afd659adb96fc5032fcf4b36209739", "e030a9a28f542debc08acceb273f228ac422798e5215ba2a791a6ddeaaca22a5"]
+certifi = ["046832c04d4e752f37383b628bc601a7ea7211496b4638f6514d0e5b9acc4939", "945e3ba63a0b9f577b1395204e13c3a231f9bc0223888be653286534e5873695"]
+chardet = ["84ab92ed1c4d4f16916e05906b6b75a6c0fb5db821cc65e70cbd64a3e2a5eaae", "fc323ffcaeaed0e0a02bf4d117757b98aed530d9ed4531e3e15460124c106691"]
 click = ["2335065e6395b9e67ca716de5f7526736bfa6ceead690adf616d925bdc622b13", "5b94b49521f6456670fdb30cd82a4eca9412788a93fa6dd6df72c94d5a8ff2d7"]
+colorama = ["05eed71e2e327246ad6b38c540c4a3117230b19679b875190486ddd2d721422d", "f8ac84de7840f5b9c4e3347b3c1eaa50f7e49c2b07596221daec5edaabbd7c48"]
+dataproperty = ["4835c2c9fdcf9ea7e721dce5c32cc7e8b502476b83b80a055aa246c0e8d163fd", "ac2bc221a53fcd2afa140d1feb45cadbe62b335f667dba1e08e3c43a93339103"]
+decorator = ["86156361c50488b84a3f148056ea716ca587df2f0de1d34750d35c21312725de", "f069f3a01830ca754ba5258fde2278454a0b5b79e0d7f5c13b3b97e57d4acff6"]
+idna = ["c357b3f628cf53ae2c4c05627ecc484553142ca23264e593d327bcde5e9c3407", "ea8b7f6188e6fa117537c3df7da9fc686d485087abf6ac197f9c46432f7e4a3c"]
+importlib-metadata = ["23d3d873e008a513952355379d93cbcab874c58f4f034ff657c7a87422fa64e8", "80d2de76188eabfbfcf27e6a37342c2827801e59c4cc14b0371c56fed43820e3"]
+ipython-genutils = ["72dd37233799e619666c9f639a9da83c34013a73e8bbc79a7a6348d93c61fab8", "eb2e116e75ecef9d4d228fdc66af54269afa26ab4463042e33785b887c628ba8"]
+jsonschema = ["0c0a81564f181de3212efa2d17de1910f8732fa1b71c42266d983cd74304e20d", "a5f6559964a3851f59040d3b961de5e68e70971afb88ba519d27e6a039efff1a"]
+jupyter-core = ["2c6e7c1e9f2ac45b5c2ceea5730bc9008d92fe59d0725eac57b04c0edfba24f7", "f4fa22d6cf25f34807c995f22d2923693575c70f02557bcbfbe59bd5ec8d8b84"]
+logbook = ["a5a96792abd8172c80d61b7530e134524f20e2841981038031e602ed5920fef5"]
+markdown = ["9ba587db9daee7ec761cfc656272be6aabe2ed300fece21208e4aab2e457bc8f", "a856869c7ff079ad84a3e19cd87a64998350c2b94e9e08e44270faef33400f81"]
+mbstrdecoder = ["936b9c7a122db40a9392ffb4789035eb5897d6ceccd459d1bd4375e0c60fc6cd", "dabfae008a6b3b78f09847c2a73e9e866f97dcd9b52f7ccadf3b05a10a3656e6"]
+msgfy = ["370c54bb036d3728af8004e750b7cd7bc5a4ac25f9cdb8be13b7865cae3c73ee", "ed14ef121857d3d7e660c9735e2eb8e17155e2e5dbc3ee5f380e531d40022fc2"]
+nbformat = ["b9a0dbdbd45bb034f4f8893cafd6f652ea08c8c1674ba83f2dc55d3955743b0b", "f7494ef0df60766b7cabe0a3651556345a963b74dbc16bc7c18479041170d402"]
+"path.py" = ["9f2169633403aa0423f6ec000e8701dd1819526c62465f5043952f92527fea0f", "e107a3a8834a97be2a047f4b641822afc76a2b78352610102782732e6b389aa3"]
+pathvalidate = ["6d18aac8478ac97456b7fb639dc456429863fefd0f75e77d33b3166bca7c5651", "bf250828f40d94881df764950cffca14bb3fa83783d9f239125a6b5e23a5646e"]
+pyrsistent = ["34b47fa169d6006b32e99d4b3c4031f155e6e68ebcc107d6454852e8e0ee6533"]
+pytablereader = ["37039c6f3b5c54b4e67990a9e55480affeacb4fd396ecebaca12ee24b37ea8ee", "f2e1477de8886267b765af7861baacc65606761bfabb0689f118cc5d27861f26"]
+requests = ["11e007a8a2aa0323f5a921e9e6a2d7e4e67d9877e85773fba9ba6419025cbeb4", "9cf5292fcd0f598c671cfc1e0d7d1a7f13bb8085e9a590f48c010551dc6c4b31"]
+retryrequests = ["2e7e53a83586be880effa09283b75b024b26edb0e8aff38344876102dbd5a0f2", "eddd18ea7034e2dc2a0708aa1de2aa3e611a7d423d8f40c9fcb4d63fdaa451f9"]
+simplejson = ["067a7177ddfa32e1483ba5169ebea1bc2ea27f224853211ca669325648ca5642", "2b8cb601d9ba0381499db719ccc9dfbb2fbd16013f5ff096b1a68a4775576a04", "2c139daf167b96f21542248f8e0a06596c9b9a7a41c162cc5c9ee9f3833c93cd", "2fc546e6af49fb45b93bbe878dea4c48edc34083729c0abd09981fe55bdf7f91", "354fa32b02885e6dae925f1b5bbf842c333c1e11ea5453ddd67309dc31fdb40a", "37e685986cf6f8144607f90340cff72d36acf654f3653a6c47b84c5c38d00df7", "3af610ee72efbe644e19d5eaad575c73fb83026192114e5f6719f4901097fce2", "3b919fc9cf508f13b929a9b274c40786036b31ad28657819b3b9ba44ba651f50", "3dd289368bbd064974d9a5961101f080e939cbe051e6689a193c99fb6e9ac89b", "491de7acc423e871a814500eb2dcea8aa66c4a4b1b4825d18f756cdf58e370cb", "495511fe5f10ccf4e3ed4fc0c48318f533654db6c47ecbc970b4ed215c791968", "65b41a5cda006cfa7c66eabbcf96aa704a6be2a5856095b9e2fd8c293bad2b46", "6c3258ffff58712818a233b9737fe4be943d306c40cf63d14ddc82ba563f483a", "75e3f0b12c28945c08f54350d91e624f8dd580ab74fd4f1bbea54bc6b0165610", "79b129fe65fdf3765440f7a73edaffc89ae9e7885d4e2adafe6aa37913a00fbb", "b1f329139ba647a9548aa05fb95d046b4a677643070dc2afc05fa2e975d09ca5", "c206f47cbf9f32b573c9885f0ec813d2622976cf5effcf7e472344bc2e020ac1", "d8e238f20bcf70063ee8691d4a72162bcec1f4c38f83c93e6851e72ad545dabb", "ee9625fc8ee164902dfbb0ff932b26df112da9f871c32f0f9c1bcf20c350fe2a", "fb2530b53c28f0d4d84990e945c2ebb470edb469d63e389bf02ff409012fe7c5", "feadb95170e45f439455354904768608e356c5b174ca30b3d11b0e3f24b5c0df"]
+simplesqlite = ["0b19c99c36b63173a715649f94a2fc3aee8deb9b70c683d584bca85e5930244b", "a03b755c4675f094fcb28a42bcef4a4be54a81b602a0772f496653adfa8e3f2f"]
+six = ["3350809f0555b11f552448330d0b52d5f24c91a322ea4a15ef22629740f3761c", "d16a0141ec1a18405cd4ce8b4613101da75da0e9a7aec5bdd4fa804d0e0eba73"]
+soupsieve = ["72b5f1aea9101cf720a36bb2327ede866fd6f1a07b1e87c92a1cc18113cbc946", "e4e9c053d59795e440163733a7fec6c5972210e1790c507e4c7b051d6c5259de"]
 sqlalchemy = ["217e7fc52199a05851eee9b6a0883190743c4fb9c8ac4313ccfceaffd852b0ff"]
+sqlitebiter = ["88fa0b8038aebe18a555597361b7ebf1db2d3288243bcdb97b466df272498a5e", "ff26a02f1628d89fce7b3d2a153f89bae01c279ee79010ddde9f8cc7e5b52b7e"]
+sqliteschema = ["023a443abdc12796928c04441fabbbe12e1fe8608f562b4650ae1f9a19504139", "0b428b189e864b2da1c54aea6170ed91cf10e6ac79b9e793d1a9cdd9087ad1e3"]
+tabledata = ["70bd4607f4e36ad344eb87dae88ec7553b4892265f8ee04e032f214bb3b7b791", "a2c59603ecb56cd2161a72978d56876377ba6a27a3e6d87e1874ba4d5ab02796"]
 toml = ["229f81c57791a41d65e399fc06bf0848bab550a9dfd5ed66df18ce5f05e73d5c", "235682dd292d5899d361a811df37e04a8828a5b1da3115886b73cf81ebc9100e", "f1db651f9657708513243e61e6cc67d101a39bad662eaa9b5546f789338e07a3"]
+traitlets = ["9c4bd2d267b7153df9152698efb1050a5d84982d3384a37b2c1f7723ba3e7835", "c6cb5e6f57c5a9bdaa40fa71ce7b4af30298fbab9ece9815b5d995ab6217c7d9"]
+typepy = ["e16695d25c24f4753d0dcac7cb6e5d782f4f2901523f73e50625f2a8ba97718f", "e27669952a679b91a8f33f85e669a6ace4d953133ebc57bfc09fbac941d98f50"]
+urllib3 = ["b246607a25ac80bedac05c6f282e3cdaf3afb65420fd024ac94435cabe6e18d1", "dbe59173209418ae49d485b87d1681aefa36252ee85884c31346debd19463232"]
+xlrd = ["546eb36cee8db40c3eaa46c351e67ffee6eeb5fa2650b71bc4c758a29a1b29b2", "e551fb498759fa3a5384a94ccd4c3c02eb7c00ea424426e212ac0c57be9dfbde"]
+zipp = ["4970c3758f4e89a7857a973b1e2a5d75bcdc47794442f2e2dd4fe8e0466e809a", "8a5712cfd3bb4248015eb3b0b3c54a5f6ee3f2425963ef2a0125b8bc40aafaec"]

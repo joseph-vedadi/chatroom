@@ -1,3 +1,5 @@
 *.db
 .idea
 .venv
+nohup.out
+*.sqlite
